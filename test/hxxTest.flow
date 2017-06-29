@@ -1,0 +1,10 @@
+@context( name = 'applicationContext' )
+{
+	alias.appendChild( parent );
+	alias = js.Browser.document.body;
+	
+	child =  hxx( '<SayHello to={data.text} />' );
+	parent = hxx('<vdom.VDom.div>{child}</vdom.VDom.div>');
+	
+	data = {text:'world'};
+}
