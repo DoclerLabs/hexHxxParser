@@ -7,7 +7,7 @@ import hex.vo.ConstructorVO;
 #end
 
 /**
- * ...
+ * Lazy by default
  * @author Francis Bourre
  */
 class HxxParser 
@@ -42,6 +42,7 @@ class HxxParser
 		constructorVO.type 			= 'coconut.ui.macros.HXX';
 		constructorVO.arguments 	=[ macro coconut.ui.macros.HXX.hxx( $dom ) ];
 		constructorVO.filePosition 	= expr.pos;
+		constructorVO.lazy 			= true;
 		return constructorVO;
 	}
 	
@@ -53,9 +54,7 @@ class HxxParser
 		constructorVO.cType 	= tink.macro.Positions.makeBlankType( constructorVO.filePosition );
 
 		//Building result
-		return constructorVO.shouldAssign ?
-			macro @:pos( constructorVO.filePosition ) var $idVar = $e:
-			macro @:pos( constructorVO.filePosition ) $e;	
+		return macro @:pos( constructorVO.filePosition ) $e;	
 	}
 	#end
 }
